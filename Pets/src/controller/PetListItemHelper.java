@@ -13,6 +13,7 @@ public class PetListItemHelper {
 	
 	static EntityManagerFactory emfactory =	Persistence.createEntityManagerFactory("Pets");
 
+	//Backend method to add the pet to the database
 	public void insertPet(PetList li) {
 		
 		EntityManager em = emfactory.createEntityManager();
@@ -24,6 +25,7 @@ public class PetListItemHelper {
 		
 	}
 	
+	//Backend method to query the database and return the list of pets
 	public List<PetList> showAllPets(){
 		EntityManager em = emfactory.createEntityManager();
 		List<PetList> allPets = em.createQuery("Select p from PetList p").getResultList();
@@ -31,6 +33,7 @@ public class PetListItemHelper {
 		return allPets;
 	}
 	
+	//Backend method to query the database to find a pet and delete the pet from the database
 	public void deletePet(PetList toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
@@ -50,6 +53,7 @@ public class PetListItemHelper {
 		em.close();
 	}
 
+	//Backend method to take PetList and find the ID to edit in the database
 	public PetList searchForPetById(int idToEdit) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
@@ -59,6 +63,7 @@ public class PetListItemHelper {
 		return	found;
 	}
 
+	//Backend method to update the selected item with the values user selected
 	public void updatePetItem(PetList toEdit) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
@@ -69,6 +74,7 @@ public class PetListItemHelper {
 		
 	}
 
+	//Backend method to find the pet by Type from the database and return it
 	public List<PetList> searchForPetByType(String petType) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
@@ -82,6 +88,7 @@ public class PetListItemHelper {
 		
 	}
 
+	//Backend method to find the pet by Name from the database and return it
 	public List<PetList> searchForPetByName(String petName) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
@@ -94,6 +101,7 @@ public class PetListItemHelper {
 		return	foundPets;
 	}
 	
+	//Backend method to find the pet by Owner from the database and return it
 	public List<PetList> searchForPetByOwner(String petOwner) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
@@ -106,6 +114,7 @@ public class PetListItemHelper {
 		return	foundPets;
 	}
 	
+	//Backend method to close the database connection
 	public void cleanUp() {
 		emfactory.close();
 	}

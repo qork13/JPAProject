@@ -22,17 +22,22 @@ public class PetList {
 	@Column(name="OWNER")
 	private String owner;
 	
+	
+	//PetList no arg constructor
 	public PetList() {
 		super();
 	}
 	
+	//PetList constructor taking in type, name and owner
 	public PetList(String type, String name, String owner) {
 		super();
 		this.type = type;
 		this.name = name;
 		this.owner = owner;
 	}
-
+	
+	
+	//Getters and Setters for id, type, name, and owner
 	public int getId() {
 		return id;
 	}
@@ -65,6 +70,7 @@ public class PetList {
 		this.owner = owner;
 	}
 	
+	//Method to return the Type, Name and Owner to the program as a readable String
 	public String returnPetDetails() {
 		return "Type: " + type + " Name: " + name + " Owner: " + owner;
 	}

@@ -9,8 +9,10 @@ public class StartPetsProgram {
 	
 	static Scanner in = new Scanner(System.in);
 	static PetListItemHelper plih = new PetListItemHelper();
-
-	private static void addAnItem() {
+	
+	
+    //Method to add a pet
+	private static void addPet() {
 		// TODO Auto-generated method stub
 		System.out.print("Enter the type of pet: ");
 		String type = in.nextLine();
@@ -25,7 +27,8 @@ public class StartPetsProgram {
 
 	}
 
-	private static void deleteAnItem() {
+	//Method to delete a pet
+	private static void deletePet() {
 		// TODO Auto-generated method stub
 		System.out.print("Enter the type of pet: ");
 		String type = in.nextLine();
@@ -39,7 +42,8 @@ public class StartPetsProgram {
 
 	}
 
-	private static void editAnItem() {
+	//Edit method: can find pets by Type, Name or Owner
+	private static void editPet() {
 		// TODO Auto-generated method stub
 		System.out.println("How would you like to search? ");
 		System.out.println("1 : Search by Type");
@@ -65,6 +69,7 @@ public class StartPetsProgram {
 
 		}
 
+		//If statement to return list of found pets by ID and provide a method to update the record
 		if (!foundPets.isEmpty()) {
 			System.out.println("Found Results.");
 			for (PetList l : foundPets) {
@@ -81,6 +86,7 @@ public class StartPetsProgram {
 			int update = in.nextInt();
 			in.nextLine();
 
+			//If statement to update ID by Type, Name, or Owner
 			if (update == 1) {
 				System.out.print("New Type: ");
 				String newType = in.nextLine();
@@ -89,7 +95,8 @@ public class StartPetsProgram {
 				System.out.print("New Name: ");
 				String newName = in.nextLine();
 				toEdit.setName(newName);
-			} else  {
+			} else 
+			{
 				System.out.print("New Owner: ");
 				String newOwner = in.nextLine();
 				toEdit.setOwner(newOwner);
@@ -103,12 +110,14 @@ public class StartPetsProgram {
 
 	}
 
+	//calls runMenu method
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		runMenu();
 
 	}
 
+	//Menu seen when program runs
 	public static void runMenu() {
 		boolean goAgain = true;
 		System.out.println("--- Welcome to the pet database! ---");
@@ -124,11 +133,11 @@ public class StartPetsProgram {
 			in.nextLine();
 
 			if (selection == 1) {
-				addAnItem();
+				addPet();
 			} else if (selection == 2) {
-				editAnItem();
+				editPet();
 			} else if (selection == 3) {
-				deleteAnItem();
+				deletePet();
 			} else if (selection == 4) {
 				viewTheList();
 			} else {
@@ -141,6 +150,7 @@ public class StartPetsProgram {
 
 	}
 
+	//Gets the list of pets in the Database and returns it to the console
 	private static void viewTheList() {
 		List<PetList> allPets = plih.showAllPets();
 		for(PetList singlePet : allPets) {
